@@ -1,12 +1,12 @@
 import { McpServer } from "@modelcontextprotocol/server";
 import { z } from "zod";
+import { registerRobloxStudioTools } from "./robloxTools";
 
 /**
- * Registra ferramentas disponíveis no servidor MCP.
- * Novas ferramentas podem ser adicionadas facilmente aqui.
+ * Registra todas as ferramentas disponíveis no servidor MCP
  */
 export function registerMcpTools(server: McpServer) {
-  // Ferramenta de Ping / Healthcheck
+  // Ferramentas Utilitárias Básicas
   server.registerTool(
     "ping",
     {
@@ -28,7 +28,6 @@ export function registerMcpTools(server: McpServer) {
     }
   );
 
-  // Ferramenta de Eco
   server.registerTool(
     "echo",
     {
@@ -49,7 +48,6 @@ export function registerMcpTools(server: McpServer) {
     }
   );
 
-  // Ferramenta de Informações do Servidor
   server.registerTool(
     "server_info",
     {
@@ -76,4 +74,7 @@ export function registerMcpTools(server: McpServer) {
       };
     }
   );
+
+  // Registra as 28 ferramentas oficiais do Roblox Studio
+  registerRobloxStudioTools(server);
 }
